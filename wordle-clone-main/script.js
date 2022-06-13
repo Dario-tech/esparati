@@ -12923,7 +12923,7 @@ function shakeTiles(tiles) {
 
 function checkWinLose(guess, tiles) {
   if (guess === targetWord) {
-    showAlert("Gracias por el finde", 5000)
+    showAlert("Gracias por el finde.Te quiero", 5000)
     danceTiles(tiles)
     stopInteraction()
     return
