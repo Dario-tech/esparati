@@ -12920,19 +12920,44 @@ function shakeTiles(tiles) {
     )
   })
 }
+function showAlertWrong(message, duration = 100) {
+  const alert = document.createElement("div")
+  const imagen = document.createElement("img")
+  alert.textContent = message
+  alert.classList.add("alert")
+  imagen.src = "example2.jpg"
+  imagen.classList.add("imagenNueva")
 
+  alertContainer.prepend(alert)
+  alert.prepend(imagen)
+
+  setTimeout(() => {
+    alert.classList.add("hide")
+    alert.addEventListener("transitionend", () => {
+      alert.remove()
+    })
+  }, duration)
+
+}
 function checkWinLose(guess, tiles) {
   if (guess === targetWord) {
-    showAlert("Gracias por el finde.Te quiero", 5000)
+    var string = 'Gracias por el finde.Te quiero'
+    showAlert(string, 5000)
     danceTiles(tiles)
     stopInteraction()
     return
   }
+  
 
   const remainingTiles = guessGrid.querySelectorAll(":not([data-letter])")
   if (remainingTiles.length === 0) {
-    showAlert(targetWord.toUpperCase(), null)
+    //showAlert(targetWord.toUpperCase(), null)
+    //stopInteraction()
+    var string = 'Jajajajaja qué pringa.'
+    showAlertWrong(string,5000)
+    danceTiles(tiles)
     stopInteraction()
+    return
   }
 }
 
